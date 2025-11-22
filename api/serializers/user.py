@@ -110,6 +110,7 @@ class UserSerializer(serializers.ModelSerializer):
             password = validated_data.pop("password")
             if password != "" and not settings.DEMO_SITE:
                 instance.set_password(password)
+                instance.save()
         if "avatar" in validated_data:
             instance.avatar = validated_data.pop("avatar")
             instance.save()
